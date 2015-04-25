@@ -18,7 +18,7 @@
       "method": "hooks.actions.postUpvote"
     },
     {
-      "hook": "actions:post.unvote",
+      "hook": "action:post.unvote",
       "method": "hooks.actions.postUnvote"
     },
     {
