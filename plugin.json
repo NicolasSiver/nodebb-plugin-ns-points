@@ -23,7 +23,11 @@
     },
     {
       "hook": "filter:admin.header.build",
-      "method": "hooks.filters.menu"
+      "method": "hooks.filters.menuAdmin"
+    },
+    {
+      "hook": "filter:navigation.available",
+      "method": "hooks.filters.navigation"
     },
     {
       "hook": "filter:user.account",

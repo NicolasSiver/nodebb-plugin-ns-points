@@ -22,13 +22,25 @@
         });
     };
 
-    Filter.menu = function (custom_header, callback) {
-        custom_header.plugins.push({
+    Filter.menuAdmin = function (header, callback) {
+        header.plugins.push({
             route: '/plugins/points',
             icon : 'fa-gamepad',
             name : 'Points'
         });
-        callback(null, custom_header);
+        callback(null, header);
+    };
+
+    Filter.navigation = function (items, callback) {
+        items.push({
+            route    : "/points",
+            title    : "Points",
+            enabled  : true,
+            iconClass: "fa-gamepad",
+            textClass: "visible-xs-inline",
+            text     : "Points"
+        });
+        callback(null, items);
     };
 
     /**
