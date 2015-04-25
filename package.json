@@ -1,0 +1,28 @@
+{
+  "name": "nodebb-plugin-ns-points",
+  "version": "1.0.0",
+  "description": "Additional metrics for user profiles",
+  "main": "plugin.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NicolasSiver/nodebb-plugin-ns-points.git"
+  },
+  "keywords": [
+    "nodebb",
+    "plugin",
+    "points",
+    "experience",
+    "gamification",
+    "metrics",
+    "profile"
+  ],
+  "author": "Nicolas Siver",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NicolasSiver/nodebb-plugin-ns-points/issues"
+  },
+  "homepage": "https://github.com/NicolasSiver/nodebb-plugin-ns-points#readme"
+}
