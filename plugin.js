@@ -1,11 +1,13 @@
 (function (Plugin) {
     'use strict';
 
-    var filters  = require('./app/filters'),
+    var actions  = require('./app/actions'),
+        filters  = require('./app/filters'),
         settings = require('./app/settings');
 
     //NodeBB list of Hooks: https://github.com/NodeBB/NodeBB/wiki/Hooks
     Plugin.hooks = {
+        actions: actions,
         filters: filters,
         statics: {
             load: function (params, callback) {

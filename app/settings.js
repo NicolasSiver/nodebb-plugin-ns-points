@@ -8,7 +8,12 @@
 
         //Memory cache
         settingsCache = null,
-        defaults      = {};
+        defaults      = {
+            postWeight            : 1,
+            topicWeight           : 4,
+            reputationWeight      : 2,
+            reputationActionWeight: 1
+        };
 
     Settings.init = function (done) {
         meta.settings.get(constants.NAMESPACE, function (error, settings) {
