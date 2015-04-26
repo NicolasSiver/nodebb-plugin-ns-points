@@ -2,14 +2,23 @@
 
 Additional metrics for User Profiles. It's like experience in video games. Plugin is good for gamification of your board.
 
-<!-- START doctoc -->
-<!-- END doctoc -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+ 
+
+- [Themes](#themes)
+- [TODO](#todo)
+- [Changelog](#changelog)
+  - [v1.0.0 - 26.04.2015](#v100---26042015)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Themes
 
 Plugin populates both: `Profile` and `Topic` views. Search for `points` property in corresponding entities. If you want points in Profile, do very basic changes to your theme:
 
-Example: Vanilla Theme, `/account/profile.tpl`
+> Example: Vanilla Theme, `/account/profile.tpl`, edit template in package directory - `node_modules`
+
 ```html
 <div class="text-center account-stats">
 
@@ -50,3 +59,9 @@ Example: Vanilla Theme, `/account/profile.tpl`
 - Add Presets for ranking calculation
 - Add Sections to Overview page: all time, today, personal.
 - Add Utility for initial point calculation
+
+## Changelog
+
+### v1.0.0 - 26.04.2015
+
+- Very first release
