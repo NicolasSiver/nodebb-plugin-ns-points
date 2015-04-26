@@ -5,6 +5,39 @@ Additional metrics for User Profiles. It's like experience in video games. Plugi
 <!-- START doctoc -->
 <!-- END doctoc -->
 
+## Themes
+
+Plugin populates both: `Profile` and `Topic` views. Search for `points` property in corresponding entities. If you want points in Profile, do very basic changes to your theme:
+
+Example: Vanilla Theme, `/account/profile.tpl`
+```html
+<div class="text-center account-stats">
+
+    <div class="inline-block text-center">
+        <span class="human-readable-number" title="{reputation}">{reputation}</span>
+        <span class="account-bio-label">[[global:reputation]]</span>
+    </div>
+
+    <div class="inline-block text-center">
+        <span class="human-readable-number" title="{postcount}">{postcount}</span>
+        <span class="account-bio-label">[[global:posts]]</span>
+    </div>
+
+    <div class="inline-block text-center">
+        <span class="human-readable-number" title="{profileviews}">{profileviews}</span>
+        <span class="account-bio-label">[[user:profile_views]]</span>
+    </div>
+
+    <!-- IF points -->
+    <div class="inline-block text-center">
+        <span class="human-readable-number" title="{points}">{points}</span>
+        <span class="account-bio-label">Points</span>
+    </div>
+    <!-- ENDIF points -->
+    
+</div>
+```
+
 ## TODO
 
 - Add Gifts: ability to add points through ACP with a notification
