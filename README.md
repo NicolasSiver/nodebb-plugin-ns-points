@@ -59,6 +59,7 @@ Plugin populates both: `Profile` and `Topic` views. Search for `points` property
 - Add Presets for ranking calculation
 - Add Sections to Overview page: all time, today, personal.
 - Add Utility for initial point calculation
+- Add Tests (Mocha/Tape)
 
 ## Changelog
 
