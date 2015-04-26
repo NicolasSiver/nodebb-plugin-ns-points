@@ -12,7 +12,11 @@
             postWeight            : 1,
             topicWeight           : 4,
             reputationWeight      : 2,
-            reputationActionWeight: 1
+            reputationActionWeight: 1,
+            maxUsers              : 20,
+
+            basePoints: 10,
+            baseGrow  : 4
         };
 
     Settings.init = function (done) {
