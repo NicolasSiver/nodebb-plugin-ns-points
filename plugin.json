@@ -42,6 +42,9 @@
       "method": "hooks.statics.load"
     }
   ],
+  "less": [
+    "less/client.less"
+  ],
   "staticDirs": {
     "templates": "./public/templates",
     "css": "./public/css",

@@ -24,7 +24,7 @@
                 return done(error);
             }
             //TODO Today Statistics
-            debug(uid, increment, points);
+            //debug(uid, increment, points);
             done(null);
         });
     };
