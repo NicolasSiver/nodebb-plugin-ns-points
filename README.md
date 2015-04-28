@@ -56,6 +56,9 @@ Plugin populates both: `Profile` and `Topic` views. Search for `points` property
 - Add Complexity to Point calculation: encourage tags in topic creation
 - Add Stuggering animation to overview page
 - Add Custom ranking calculators
+- Add ACP Panel for raw point rewards
+- Add API for raw point rewards
+- Add Custom Notifications for levels
 - Add Presets for ranking calculation
 - Add Sections to Overview page: all time, today, personal.
 - Add Utility for initial point calculation
