@@ -6,12 +6,24 @@ Additional metrics for User Profiles. It's like experience in video games. Plugi
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
  
 
+- [Ranking Calculation](#ranking-calculation)
 - [Themes](#themes)
 - [TODO](#todo)
 - [Changelog](#changelog)
+  - [v1.1.0 - 10.05.2015](#v110---10052015)
   - [v1.0.0 - 26.04.2015](#v100---26042015)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+## Ranking Calculation
+
+Ranking calculator is a function, that should accept 2 parameters - settings and raw points.
+Settings could vary from one calculator to another. Calculator must return object with properties listed below:
+
+- rank [Number] - user rank, level
+- rankProgress [Number] - amount of points on current level
+- rankTotal [Number] - amount of points needed to level-up
+- total [Number] - raw amount of points
 
 ## Themes
 
@@ -65,6 +77,10 @@ Plugin populates both: `Profile` and `Topic` views. Search for `points` property
 - Add Tests (Mocha/Tape)
 
 ## Changelog
+
+### v1.1.0 - 10.05.2015
+
+- Rank calculation moved to client-side
 
 ### v1.0.0 - 26.04.2015
 
