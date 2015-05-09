@@ -28,7 +28,7 @@
                                 return res.status(500).json(error);
                             }
                             res.render(
-                                'client/points', payload
+                                'client/points/overview', payload
                             );
                         });
                     };
