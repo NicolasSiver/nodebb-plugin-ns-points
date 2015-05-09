@@ -45,6 +45,10 @@
   "less": [
     "less/client.less"
   ],
+  "scripts": [
+    "public/js/ranking.js",
+    "public/js/overview.js"
+  ],
   "staticDirs": {
     "templates": "./public/templates",
     "css": "./public/css",
