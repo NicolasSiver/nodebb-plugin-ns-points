@@ -81,6 +81,7 @@ Plugin populates both: `Profile` and `Topic` views. Search for `points` property
 ### v1.2.0 - 10.05.2015
 
 - Use Posts filter
+- Added Settings to Topic View
 
 ### v1.1.0 - 10.05.2015
 
