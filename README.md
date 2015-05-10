@@ -78,6 +78,10 @@ Plugin populates both: `Profile` and `Topic` views. Search for `points` property
 
 ## Changelog
 
+### v1.2.0 - 10.05.2015
+
+- Use Posts filter
+
 ### v1.1.0 - 10.05.2015
 
 - Rank calculation moved to client-side

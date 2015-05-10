@@ -30,12 +30,12 @@
       "method": "hooks.filters.navigation"
     },
     {
-      "hook": "filter:user.account",
-      "method": "hooks.filters.account"
+      "hook": "filter:post.getPosts",
+      "method": "hooks.filters.getPosts"
     },
     {
-      "hook": "filter:controllers.topic.get",
-      "method": "hooks.filters.topic"
+      "hook": "filter:user.account",
+      "method": "hooks.filters.account"
     },
     {
       "hook": "static:app.load",
