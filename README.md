@@ -8,8 +8,11 @@ Additional metrics for User Profiles. It's like experience in video games. Plugi
 
 - [Ranking Calculation](#ranking-calculation)
 - [Themes](#themes)
+  - [Profile View](#profile-view)
+  - [Topic View](#topic-view)
 - [TODO](#todo)
 - [Changelog](#changelog)
+  - [v1.2.0 - 10.05.2015](#v120---10052015)
   - [v1.1.0 - 10.05.2015](#v110---10052015)
   - [v1.0.0 - 26.04.2015](#v100---26042015)
 
