@@ -27,7 +27,11 @@ Settings could vary from one calculator to another. Calculator must return objec
 
 ## Themes
 
-Plugin populates both: `Profile` and `Topic` views. Search for `points` property in corresponding entities. If you want points in Profile, do very basic changes to your theme:
+Plugin populates both: `Profile` and `Topic` views. Search for `points` property in corresponding entities.
+
+### Profile View
+
+If you want points in Profile, do very basic changes to your theme:
 
 > Example: Vanilla Theme, `/account/profile.tpl`, edit template in package directory - `node_modules`
 
@@ -58,6 +62,11 @@ Plugin populates both: `Profile` and `Topic` views. Search for `points` property
     
 </div>
 ```
+
+### Topic View
+
+Every post will have additional field: `points`.
+If you want to use client-side ranking calculation, you could require ranking helper via `forum/points/ranking` and don't forget to add points settings to your `topic.tpl`, add this line: `<!-- IMPORT partials/variables/points_settings.tpl -->`
 
 ## TODO
 
