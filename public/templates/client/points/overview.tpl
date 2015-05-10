@@ -27,6 +27,5 @@
     </div>
     <!-- END users -->
 
-    <input type="hidden" template-variable="basePoints" value="{settings.basePoints}"/>
-    <input type="hidden" template-variable="baseGrow" value="{settings.baseGrow}"/>
+    <!-- IMPORT partials/variables/points_settings.tpl -->
 </div>

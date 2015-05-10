@@ -34,6 +34,10 @@
       "method": "hooks.filters.getPosts"
     },
     {
+      "hook": "filter:topic.get",
+      "method": "hooks.filters.topicGet"
+    },
+    {
       "hook": "filter:user.account",
       "method": "hooks.filters.account"
     },

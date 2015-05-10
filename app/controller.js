@@ -14,12 +14,18 @@
                 return done(error);
             }
 
-            done(null, {
-                users        : users,
-                settings     : settings.get(),
-                relative_path: nconf.get('relative_path')
-            });
+            var topUsers = {
+                users         : users,
+                relative_path : nconf.get('relative_path')
+            };
+
+            Controller.getResponseWithSettings(topUsers, done);
         });
+    };
+
+    Controller.getResponseWithSettings = function (response, done) {
+        response.pointsSettings = settings.get();
+        done(null, response);
     };
 
 })(module.exports);

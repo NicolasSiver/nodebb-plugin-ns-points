@@ -1,10 +1,10 @@
 (function (Filter) {
     'use strict';
 
-    var async     = require('async'),
-        database  = require('./database'),
-        settings  = require('./settings'),
-        constants = require('./constants');
+    var async      = require('async'),
+        database   = require('./database'),
+        controller = require('./controller'),
+        constants  = require('./constants');
 
     /**
      * Hook to render user profile.
@@ -27,7 +27,7 @@
      * @param payload {object} Fields: {posts: posts, uid: uid}
      * @param callback {function}
      */
-    Filter.getPosts = function(payload, callback){
+    Filter.getPosts = function (payload, callback) {
         async.map(payload.posts, function (post, next) {
             database.getPoints(post.uid, function (error, points) {
                 if (error) {
@@ -64,6 +64,20 @@
             text     : "Points"
         });
         callback(null, items);
+    };
+
+    /**
+     * Hook to inject points settings and values
+     * @param topicData {object} Fields: {topic: topicData, uid: uid}
+     * @param callback {function}
+     */
+    Filter.topicGet = function (topicData, callback) {
+        controller.getResponseWithSettings(topicData.topic, function (error, topicWithSettings) {
+            if (error) {
+                return callback(error);
+            }
+            callback(null, topicData);
+        });
     };
 
 })(module.exports);
