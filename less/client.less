@@ -30,19 +30,11 @@
     }
   }
 
-  .stats {
+  .points-stats {
     padding-left: @block-margin;
 
-    .user-info {
-
-      a {
-        font-weight: @font-narrow;
-        font-size: @username-size;
-      }
-
-      .numbers {
-        text-transform: lowercase;
-      }
+    .points-numbers {
+      text-transform: lowercase;
     }
 
     .progress {
@@ -53,5 +45,14 @@
     .rank-progress {
       text-align: center;
     }
+  }
+
+  .points-user-name {
+    font-weight: @font-narrow;
+    font-size: @username-size;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 }
