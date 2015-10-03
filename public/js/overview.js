@@ -5,8 +5,8 @@
 define('forum/client/points/overview', ['components', 'forum/points/ranking'], function (components, ranking) {
 
     var Overview  = {},
-        columns   = 3,
-        className = 'col-lg-3 col-md-4 col-xs-12';
+        columns   = 4,
+        className = 'col-lg-3 col-md-3 col-xs-12';
 
     Overview.init = function () {
         var container = document.getElementsByClassName('points-users')[0];
@@ -17,6 +17,7 @@ define('forum/client/points/overview', ['components', 'forum/points/ranking'], f
 
             if (i % columns == 0) {
                 htmlRow = document.createElement('div');
+                htmlRow.className = 'row';
                 container.appendChild(htmlRow);
             }
 
