@@ -6,7 +6,8 @@ define('forum/client/points/overview', ['components', 'forum/points/ranking'], f
 
     var Overview  = {},
         columns   = 4,
-        className = 'col-lg-3 col-md-3 col-xs-12';
+        className = 'col-lg-3 col-md-3 col-xs-12 points-fade-in',
+        delay     = 0.1;
 
     Overview.init = function () {
         var container = document.getElementsByClassName('points-users')[0];
@@ -31,11 +32,11 @@ define('forum/client/points/overview', ['components', 'forum/points/ranking'], f
             payload.relative_path = ajaxify.data.relative_path;
             payload.rank = rankMeta.rank;
             payload.rankProgress = getProgressMessage(rankMeta);
-            //TODO Add Stugger animation for progress bars
             payload.progress = rankMeta.rankProgress / rankMeta.rankTotal * 100;
 
             htmlUser = document.createElement('div');
             htmlUser.className = className;
+            htmlUser.style['animation-delay'] = delay * i + 's';
             htmlUser.innerHTML = templates.parse(ajaxify.data.userTemplate, payload);
             htmlRow.appendChild(htmlUser);
         }
