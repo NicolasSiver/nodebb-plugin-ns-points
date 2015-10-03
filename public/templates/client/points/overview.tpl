@@ -1,4 +1,6 @@
 <div class="points-container">
+    <!-- IMPORT partials/breadcrumbs.tpl -->
+
     <!-- BEGIN users -->
     <div class="row">
         <div class="col-md-12">
@@ -26,6 +28,4 @@
         </div>
     </div>
     <!-- END users -->
-
-    <!-- IMPORT partials/variables/points_settings.tpl -->
 </div>

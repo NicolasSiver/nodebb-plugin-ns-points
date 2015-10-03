@@ -10,8 +10,8 @@ define('forum/client/points/overview', ['components', 'forum/points/ranking'], f
         $('[component="points/top-user"]').each(function (index, userDomElement) {
             var element     = $(this),
                 points      = element.data('points'),
-                basePoints  = ajaxify.variables.get('basePoints'),
-                baseGrow    = ajaxify.variables.get('baseGrow'),
+                basePoints  = ajaxify.data.pointsSettings.basePoints,
+                baseGrow    = ajaxify.data.pointsSettings.baseGrow,
                 rankMeta    = ranking.defaultRanking({
                     basePoints: basePoints,
                     baseGrow  : baseGrow
