@@ -6,11 +6,12 @@
     margin-bottom: @line-margin;
   }
 
-  .avatar {
+  .points-avatar {
     position: relative;
     width: @avatar-size;
     height: @avatar-size;
     padding: 0;
+    flex-shrink: 0;
 
     .img-thumbnail {
       width: 100%;
@@ -31,9 +32,16 @@
   }
 
   .points-stats {
-    padding-left: @block-margin;
+    flex: 1;
+    margin-left: @block-margin;
 
     .points-numbers {
+      display: block;
+      text-transform: lowercase;
+    }
+
+    .rank-progress {
+      display: block;
       text-transform: lowercase;
     }
 
@@ -41,18 +49,26 @@
       height: @progress-height;
       margin: @padding-s 0;
     }
+  }
 
-    .rank-progress {
-      text-align: center;
-    }
+  .points-user-info {
+    width: 100%;
   }
 
   .points-user-name {
     font-weight: @font-narrow;
     font-size: @username-size;
 
+    display: block;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    width: 100%;
+  }
+
+  .points-user {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
   }
 }
