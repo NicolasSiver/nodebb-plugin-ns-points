@@ -31,6 +31,6 @@
     "object-assign": "^2.0.0"
   },
   "nbbpm": {
-    "compatibility": "^0.7.0"
+    "compatibility": "^0.8.2"
   }
 }
