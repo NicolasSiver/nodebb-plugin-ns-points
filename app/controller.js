@@ -16,7 +16,8 @@
 
             var topUsers = {
                 users         : users,
-                relative_path : nconf.get('relative_path')
+                relative_path : nconf.get('relative_path'),
+                userTemplate : settings.getUserTemplate()
             };
 
             Controller.getResponseWithSettings(topUsers, done);

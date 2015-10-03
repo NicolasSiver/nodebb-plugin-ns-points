@@ -2,12 +2,15 @@
     'use strict';
 
     var objectAssign  = require('object-assign'),
+        fs            = require('fs'),
+        path          = require('path'),
 
         meta          = require('./nodebb').meta,
         constants     = require('./constants'),
 
         //Memory cache
         settingsCache = null,
+        userTemplate  = null,
         defaults      = {
             postWeight            : 1,
             topicWeight           : 4,
@@ -25,13 +28,25 @@
                 return done(error);
             }
             settingsCache = objectAssign(defaults, settings);
-            //logger.log('verbose', 'Settings are loaded', settingsCache);
-            done();
+            fs.readFile(
+                path.resolve(__dirname, '../public', './templates/client/points/user.tpl'),
+                'utf8',
+                function (error, template) {
+                    if (error) {
+                        return done(error);
+                    }
+                    userTemplate = template;
+                    done();
+                });
         });
     };
 
     Settings.get = function () {
         return settingsCache;
+    };
+
+    Settings.getUserTemplate = function () {
+        return userTemplate;
     };
 
     Settings.save = function (settings, done) {
