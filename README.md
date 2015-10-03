@@ -82,7 +82,6 @@ If you want utilize points calculation feature in topic view, you should use the
 - Add Points Grid: multipliers or raw values for different categories
 - Add Fresh Points: provide information for points that are earned today
 - Add Complexity to Point calculation: encourage tags in topic creation
-- Add Stuggering animation to overview page
 - Add Custom ranking calculators
 - Add ACP Panel for raw point rewards
 - Add API for raw point rewards
@@ -98,6 +97,7 @@ If you want utilize points calculation feature in topic view, you should use the
 
 - Compatibility with `v0.8.x` forum
 - Improved support for themes, you don't need inject templates anymore
+- Improved Overview page
 
 **v1.2.0 - 5/10/2015**
 
