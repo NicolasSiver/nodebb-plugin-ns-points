@@ -25,7 +25,7 @@ Additional metrics for User Profiles. It's like experience in video games. Plugi
 Ranking calculator is a function, that should accept 2 parameters - settings and raw points.
 Settings could vary from one calculator to another. Calculator must return object with properties listed below:
 
-- rank [Number] - user rank, level
+- rank [Number] - user's rank, level
 - rankProgress [Number] - amount of points on current level
 - rankTotal [Number] - amount of points needed to level-up
 - total [Number] - raw amount of points
@@ -94,20 +94,20 @@ If you want utilize points calculation feature in topic view, you should use the
 
 ## Changelog
 
-** v2.0.0 - 10/2/2015 **
+**v2.0.0 - 10/2/2015**
 
 - Compatibility with `v0.8.x` forum
 - Improved support for themes, you don't need inject templates anymore
 
-** v1.2.0 - 5/10/2015 **
+**v1.2.0 - 5/10/2015**
 
 - Use Posts filter
 - Added Settings to Topic View
 
-** v1.1.0 - 5/10/2015 **
+**v1.1.0 - 5/10/2015**
 
 - Rank calculation moved to client-side
 
-** v1.0.0 - 4/26/2015 **
+**v1.0.0 - 4/26/2015**
 
 - Very first release
