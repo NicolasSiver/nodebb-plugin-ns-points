@@ -2,6 +2,11 @@
 
 Additional metrics for User Profiles. It's like experience in video games. Plugin is good for gamification of your board.
 
+![Version](https://img.shields.io/npm/v/nodebb-plugin-ns-points.svg)
+![Dependencies](https://david-dm.org/NicolasSiver/nodebb-plugin-ns-points.svg)
+![bitHound Score](https://www.bithound.io/github/NicolasSiver/nodebb-plugin-ns-points/badges/score.svg)
+![Code Climate](https://img.shields.io/codeclimate/github/NicolasSiver/nodebb-plugin-ns-points.svg)
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
  
@@ -12,9 +17,6 @@ Additional metrics for User Profiles. It's like experience in video games. Plugi
   - [Topic View](#topic-view)
 - [TODO](#todo)
 - [Changelog](#changelog)
-  - [v1.2.0 - 10.05.2015](#v120---10052015)
-  - [v1.1.0 - 10.05.2015](#v110---10052015)
-  - [v1.0.0 - 26.04.2015](#v100---26042015)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -27,6 +29,8 @@ Settings could vary from one calculator to another. Calculator must return objec
 - rankProgress [Number] - amount of points on current level
 - rankTotal [Number] - amount of points needed to level-up
 - total [Number] - raw amount of points
+
+Example: [Default Function](https://github.com/NicolasSiver/nodebb-plugin-ns-points/blob/f34a4cf6c69b4c8b1abbf88efc3a0f1d8ad6fcf2/public/js/ranking.js#L9-L27)
 
 ## Themes
 
@@ -69,7 +73,7 @@ If you want points in Profile, do very basic changes to your theme:
 ### Topic View
 
 Every post will have additional field: `points`.
-If you want to use client-side ranking calculation, you could require ranking helper via `forum/points/ranking` and don't forget to add points settings to your `topic.tpl`, add this line: `<!-- IMPORT partials/variables/points_settings.tpl -->`
+If you want utilize points calculation feature in topic view, you should use theme that supports such type of integration.
 
 ## TODO
 
@@ -90,15 +94,20 @@ If you want to use client-side ranking calculation, you could require ranking he
 
 ## Changelog
 
-### v1.2.0 - 10.05.2015
+** v2.0.0 - 10/2/2015 **
+
+- Compatibility with `v0.8.x` forum
+- Improved support for themes, you don't need inject templates anymore
+
+** v1.2.0 - 5/10/2015 **
 
 - Use Posts filter
 - Added Settings to Topic View
 
-### v1.1.0 - 10.05.2015
+** v1.1.0 - 5/10/2015 **
 
 - Rank calculation moved to client-side
 
-### v1.0.0 - 26.04.2015
+** v1.0.0 - 4/26/2015 **
 
 - Very first release
