@@ -53,7 +53,6 @@
             if (error) {
                 return callback(error);
             }
-            console.log(postData.pid);
             postData.points = points || 0;
             callback(null, postData);
         });
