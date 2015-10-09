@@ -93,6 +93,12 @@ If you want utilize points calculation feature in topic view, you should use the
 
 ## Changelog
 
+**v2.1.0 - 10/8/2015**
+
+- New posts now will be populated with points
+- Updated all package dependencies
+- Points section will show exactly 20 top users
+
 **v2.0.0 - 10/2/2015**
 
 - Compatibility with `v0.8.x` forum
