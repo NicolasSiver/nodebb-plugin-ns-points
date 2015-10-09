@@ -30,8 +30,12 @@
       "method": "hooks.filters.navigation"
     },
     {
+      "hook": "filter:post.get",
+      "method": "hooks.filters.postGet"
+    },
+    {
       "hook": "filter:post.getPosts",
-      "method": "hooks.filters.getPosts"
+      "method": "hooks.filters.postGetPosts"
     },
     {
       "hook": "filter:topic.get",
