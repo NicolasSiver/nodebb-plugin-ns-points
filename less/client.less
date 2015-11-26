@@ -17,18 +17,32 @@
     .img-thumbnail {
       width: 100%;
       height: 100%;
+      border-radius: 50%;
+    }
+
+    .icon-thumbnail {
+      width: 100%;
+      height: 100%;
+      line-height: @avatar-size;
+      font-size: @ns-points-avatar-font-size;
+      border-radius: 50%;
+      text-align: center;
+      color: fade(@color-light, 87%);
     }
 
     span {
       position: absolute;
       bottom: 0;
       right: 0;
-      color: @color-light;
-      font-size: @rank-size;
+      text-align: center;
+      border-radius: 50%;
+      width: @ns-points-badge-size;
+      height: @ns-points-badge-size;
+      line-height: @ns-points-badge-size;
+      font-size: @ns-points-badge-font-size;
       font-weight: @font-normal;
-      padding-left: @rank-padding;
-      padding-right: @rank-padding;
-      background: fade(@color-dark, 80%);
+      color: fade(@color-light, 90%);
+      background: fade(@color-dark, 87%);
     }
   }
 
