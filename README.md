@@ -40,33 +40,19 @@ Plugin populates both: `Profile` and `Topic` views. Search for `points` property
 
 If you want points in Profile, do very basic changes to your theme:
 
-> Example: Vanilla Theme, `/account/profile.tpl`, edit template in package directory - `node_modules`
+> Example: Persona Theme, `v4`, find `templates/account/profile.tpl`, edit template in package directory - `node_modules`
+
+Find block that is responsible for [stats](https://github.com/NodeBB/nodebb-theme-persona/blob/4c32d4b0b16711bde6ee84d6b18dfb13dbfc24c0/templates/account/profile.tpl#L14-L41), and insert template where you want: 
 
 ```html
-<div class="text-center account-stats">
+<div class="account-stats">
 
-    <div class="inline-block text-center">
-        <span class="human-readable-number" title="{reputation}">{reputation}</span>
-        <span class="account-bio-label">[[global:reputation]]</span>
-    </div>
+    ...
 
-    <div class="inline-block text-center">
-        <span class="human-readable-number" title="{postcount}">{postcount}</span>
-        <span class="account-bio-label">[[global:posts]]</span>
-    </div>
-
-    <div class="inline-block text-center">
-        <span class="human-readable-number" title="{profileviews}">{profileviews}</span>
-        <span class="account-bio-label">[[user:profile_views]]</span>
-    </div>
-
-    <!-- IF points -->
-    <div class="inline-block text-center">
-        <span class="human-readable-number" title="{points}">{points}</span>
-        <span class="account-bio-label">Points</span>
-    </div>
-    <!-- ENDIF points -->
+    <!-- IMPORT partials/points_profile.tpl -->
     
+    ...
+
 </div>
 ```
 
