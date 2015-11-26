@@ -35,6 +35,7 @@ Example: [Default Function](https://github.com/NicolasSiver/nodebb-plugin-ns-poi
 ## Themes
 
 Plugin populates both: `Profile` and `Topic` views. Search for `points` property in corresponding entities.
+Don't forget to add link on _overview_ page, link should look like - `/points`
 
 ### Profile View
 
