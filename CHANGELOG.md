@@ -2,7 +2,11 @@
 
 -----------
 
-## Changelog
+### v3.0.0 - 11/26/2015
+
+- Compatibility with `v0.9.x` forum
+- Updated look for Overview page
+- Provided template for profile view, for easy include
 
 ### v2.1.0 - 10/8/2015
 
