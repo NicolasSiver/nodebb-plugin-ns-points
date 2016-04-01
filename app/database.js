@@ -32,6 +32,9 @@
                         return next(error);
                     }
                     var usersWithScores = users.map(function (userData) {
+                        // Sanitize
+                        delete userData.email;
+                        
                         userData.points = scores[userData.uid] || 0;
                         return userData;
                     });
