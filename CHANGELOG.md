@@ -2,6 +2,10 @@
 
 -----------
 
+### v3.0.1 - 3/31/2016
+
+- Security update
+
 ### v3.0.0 - 11/26/2015
 
 - Compatibility with `v0.9.x` forum
