@@ -51,7 +51,7 @@
     }
   ],
   "less": [
-    "less/client.less"
+    "style/client.less"
   ],
   "scripts": [
     "public/js/ranking.js",
