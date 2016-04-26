@@ -22,23 +22,23 @@
         async.waterfall([
             async.apply(db.getSortedSetRevRangeWithScores, namespace, 0, limit),
             function (scoredUsers, next) {
-                var scores = {};
-                var ids = scoredUsers.map(function (scoredUser) {
-                    scores[scoredUser.value] = scoredUser.score;
-                    return scoredUser.value;
-                });
-                user.getUsersData(ids, function (error, users) {
+                var scores = {},
+                    ids    = scoredUsers.map(function (scoredUser) {
+                        scores[scoredUser.value] = scoredUser.score;
+                        return scoredUser.value;
+                    });
+                next(null, ids, scores);
+            },
+            function (uids, scoreMap, next) {
+                user.getUsersFields(uids, ['picture', 'username', 'userslug'], function (error, users) {
                     if (error) {
                         return next(error);
                     }
-                    var usersWithScores = users.map(function (userData) {
-                        // Sanitize
-                        delete userData.email;
 
-                        userData.points = scores[userData.uid] || 0;
-                        return userData;
-                    });
-                    next(null, usersWithScores);
+                    next(null, users.map(function (user) {
+                        user.points = scoreMap[user.uid] || 0;
+                        return user;
+                    }));
                 });
             }
         ], done);

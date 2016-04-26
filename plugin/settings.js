@@ -41,10 +41,20 @@
         });
     };
 
+    /**
+     * @deprecated since version 4.0.0
+     */
     Settings.get = function () {
         return settingsCache;
     };
 
+    Settings.getData = function (done) {
+        done(null, settingsCache);
+    };
+
+    /**
+     * @deprecated since version 4.0.0
+     */
     Settings.getUserTemplate = function () {
         return userTemplate;
     };

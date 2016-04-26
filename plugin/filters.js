@@ -87,10 +87,11 @@
      * @param callback {function}
      */
     Filter.topicGet = function (topicData, callback) {
-        controller.getResponseWithSettings(topicData.topic, function (error, topicWithSettings) {
+        controller.injectSettings(topicData.topic, function (error, topicWithSettings) {
             if (error) {
                 return callback(error);
             }
+            topicData.topic = topicWithSettings;
             callback(null, topicData);
         });
     };

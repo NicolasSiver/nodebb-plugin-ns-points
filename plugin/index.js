@@ -2,9 +2,9 @@
     'use strict';
 
     var actions    = require('./actions'),
+        controller = require('./controller'),
         filters    = require('./filters'),
-        settings   = require('./settings'),
-        controller = require('./controller');
+        settings   = require('./settings');
 
     //NodeBB list of Hooks: https://github.com/NodeBB/NodeBB/wiki/Hooks
     Plugin.hooks = {
@@ -12,33 +12,31 @@
         filters: filters,
         statics: {
             load: function (params, callback) {
-                var router       = params.router,
-                    middleware   = params.middleware,
-                    controllers  = params.controllers,
-                    pluginUri    = '/admin/plugins/points',
-                    apiUri       = '/api' + pluginUri,
-                    renderAdmin  = function (req, res, next) {
-                        res.render(
-                            'admin/plugins/points', {}
-                        );
+                var router                = params.router,
+                    middleware            = params.middleware,
+                    controllers           = params.controllers,
+                    pluginUri             = '/admin/plugins/points',
+                    apiUri                = '/api' + pluginUri,
+
+                    renderAdmin           = function (req, res, next) {
+                        res.render(pluginUri, {});
                     },
-                    renderClient = function (req, res, next) {
+
+                    renderOverviewSection = function (req, res, next) {
                         controller.getTopUsers(function (error, payload) {
                             if (error) {
                                 return res.status(500).json(error);
                             }
-                            res.render(
-                                'client/points/overview', payload
-                            );
+                            res.render('client/points/overview', payload);
                         });
                     };
 
                 router.get(pluginUri, middleware.admin.buildHeader, renderAdmin);
                 router.get(apiUri, renderAdmin);
 
-                //Client page
-                router.get('/points', middleware.buildHeader, renderClient);
-                router.get('/api/points', renderClient);
+                // Overview Page
+                router.get('/points', middleware.buildHeader, renderOverviewSection);
+                router.get('/api/points', renderOverviewSection);
 
                 settings.init(callback);
             }
