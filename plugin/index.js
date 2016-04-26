@@ -1,8 +1,11 @@
 (function (Plugin) {
     'use strict';
 
+    var async = require('async');
+
     var actions    = require('./actions'),
         controller = require('./controller'),
+        files      = require('./files'),
         filters    = require('./filters'),
         settings   = require('./settings');
 
@@ -16,7 +19,6 @@
                     middleware            = params.middleware,
                     controllers           = params.controllers,
                     pluginUri             = '/admin/plugins/points',
-                    apiUri                = '/api' + pluginUri,
 
                     renderAdmin           = function (req, res, next) {
                         res.render(pluginUri, {});
@@ -32,13 +34,16 @@
                     };
 
                 router.get(pluginUri, middleware.admin.buildHeader, renderAdmin);
-                router.get(apiUri, renderAdmin);
+                router.get('/api' + pluginUri, renderAdmin);
 
                 // Overview Page
                 router.get('/points', middleware.buildHeader, renderOverviewSection);
                 router.get('/api/points', renderOverviewSection);
 
-                settings.init(callback);
+                async.parallel({
+                    settings: async.apply(settings.init),
+                    files   : async.apply(files.init)
+                }, callback);
             }
         }
     };

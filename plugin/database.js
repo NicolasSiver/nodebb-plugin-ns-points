@@ -1,26 +1,26 @@
 (function (Database) {
     'use strict';
 
-    var async     = require('async'),
+    var async = require('async');
 
-        nodebb    = require('./nodebb'),
-        db        = nodebb.db,
-        user      = nodebb.user,
-        constants = require('./constants'),
-        namespace = constants.NAMESPACE;
+    var nodebb    = require('./nodebb'),
+        constants = require('./constants');
+
+    var db   = nodebb.db,
+        user = nodebb.user;
 
     //FIXME Remove Points object if User is deleted or create utility method for ACP
     Database.delete = function (uid, done) {
-        db.sortedSetRemove(namespace, uid, done);
+        db.sortedSetRemove(constants.NAMESPACE, uid, done);
     };
 
     Database.getPoints = function (uid, done) {
-        db.sortedSetScore(namespace, uid, done);
+        db.sortedSetScore(constants.NAMESPACE, uid, done);
     };
 
     Database.getUsers = function (limit, done) {
         async.waterfall([
-            async.apply(db.getSortedSetRevRangeWithScores, namespace, 0, limit),
+            async.apply(db.getSortedSetRevRangeWithScores, constants.NAMESPACE, 0, limit),
             function (scoredUsers, next) {
                 var scores = {},
                     ids    = scoredUsers.map(function (scoredUser) {
@@ -45,7 +45,7 @@
     };
 
     Database.incrementBy = function (uid, increment, done) {
-        db.sortedSetIncrBy(namespace, increment, uid, done);
+        db.sortedSetIncrBy(constants.NAMESPACE, increment, uid, done);
     };
 
 })(module.exports);

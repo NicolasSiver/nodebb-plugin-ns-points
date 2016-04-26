@@ -1,16 +1,13 @@
 (function (Settings) {
     'use strict';
 
-    var objectAssign  = require('object-assign'),
-        fs            = require('fs'),
-        path          = require('path'),
+    var objectAssign = require('object-assign');
 
-        meta          = require('./nodebb').meta,
-        constants     = require('./constants'),
+    var meta      = require('./nodebb').meta,
+        constants = require('./constants');
 
-        //Memory cache
-        settingsCache = null,
-        userTemplate  = null,
+    //Memory cache
+    var settingsCache = null,
         defaults      = {
             postWeight            : 1,
             topicWeight           : 4,
@@ -28,16 +25,7 @@
                 return done(error);
             }
             settingsCache = objectAssign(defaults, settings);
-            fs.readFile(
-                path.resolve(__dirname, '../public', './templates/client/points/user.tpl'),
-                'utf8',
-                function (error, template) {
-                    if (error) {
-                        return done(error);
-                    }
-                    userTemplate = template;
-                    done();
-                });
+            done(null);
         });
     };
 
@@ -50,13 +38,6 @@
 
     Settings.getData = function (done) {
         done(null, settingsCache);
-    };
-
-    /**
-     * @deprecated since version 4.0.0
-     */
-    Settings.getUserTemplate = function () {
-        return userTemplate;
     };
 
     Settings.save = function (settings, done) {
