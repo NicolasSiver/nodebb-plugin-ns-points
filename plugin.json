@@ -3,7 +3,7 @@
   "name": "NodeBB Points",
   "description": "Additional metrics for User Profiles. It's like experience in video games. Plugin is good for gamification of your board.",
   "url": "https://github.com/NicolasSiver/nodebb-plugin-ns-points",
-  "library": "./plugin.js",
+  "library": "./plugin/index.js",
   "hooks": [
     {
       "hook": "action:post.save",
