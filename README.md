@@ -16,19 +16,18 @@ Additional metrics for User Profiles. It's like experience in video games. Plugi
   - [Profile View](#profile-view)
   - [Topic View](#topic-view)
 - [TODO](#todo)
-- [Changelog](#changelog)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-## Ranking Calculation
+## The Ranking Calculation
 
-Ranking calculator is a function, that should accept 2 parameters - settings and raw points.
+The Ranking calculator is a function, that should accept 2 parameters - settings and raw points.
 Settings could vary from one calculator to another. Calculator must return object with properties listed below:
 
-- rank [Number] - user's rank, level
-- rankProgress [Number] - amount of points on current level
-- rankTotal [Number] - amount of points needed to level-up
-- total [Number] - raw amount of points
+- `rank` [Number] - user's rank, level
+- `rankProgress` [Number] - amount of points on current level
+- `rankTotal` [Number] - amount of points needed to level-up
+- `total` [Number] - raw amount of points
 
 Example: [Default Function](https://github.com/NicolasSiver/nodebb-plugin-ns-points/blob/f34a4cf6c69b4c8b1abbf88efc3a0f1d8ad6fcf2/public/js/ranking.js#L9-L27)
 
