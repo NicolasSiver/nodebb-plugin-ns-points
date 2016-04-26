@@ -2,7 +2,7 @@
   "name": "nodebb-plugin-ns-points",
   "version": "3.0.1",
   "description": "Additional metrics for User Profiles. It's like experience in video games. Plugin is good for gamification of your board.",
-  "main": "plugin.js",
+  "main": "./plugin/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

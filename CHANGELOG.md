@@ -1,6 +1,8 @@
 # Changelog
 
------------
+### v4.0.0 - TBD
+
+- Compatibility with `v1.x.x` forum
 
 ### v3.0.1 - 3/31/2016
 
