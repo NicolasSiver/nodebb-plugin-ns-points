@@ -1,0 +1,1 @@
+export const SECTION_WILL_CHANGE = 'sectionWillChange';
