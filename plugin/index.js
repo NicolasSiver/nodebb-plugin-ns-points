@@ -21,7 +21,7 @@
                     pluginUri             = '/admin/plugins/points',
 
                     renderAdmin           = function (req, res, next) {
-                        res.render(pluginUri, {});
+                        res.render(pluginUri.substring(1), {});
                     },
 
                     renderOverviewSection = function (req, res, next) {
