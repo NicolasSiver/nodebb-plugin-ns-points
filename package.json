@@ -26,8 +26,8 @@
   },
   "homepage": "https://github.com/NicolasSiver/nodebb-plugin-ns-points#readme",
   "dependencies": {
-    "async": "^1.4.2",
-    "lodash": "^3.7.0",
+    "async": "^1.5.2",
+    "lodash": "^4.11.1",
     "object-assign": "^4.0.1"
   },
   "nbbpm": {
