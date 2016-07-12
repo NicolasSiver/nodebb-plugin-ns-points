@@ -1,12 +1,15 @@
+import Immutable from 'immutable';
+
 import * as ActionTypes from './action-types';
 import * as Pages from './pages';
 
-let pages = [
-    {name: 'Ranking', value: Pages.RANKING},
-    {name: 'Manage', value: Pages.MANAGE},
-    {name: 'Integrations', value: Pages.PLUGINS},
-    {name: 'Settings', value: Pages.SETTINGS}
-];
+const Page = new Immutable.Record({name: 'Default', value: 'None'});
+const pages = new Immutable.List([
+    new Page({name: 'Ranking', value: Pages.RANKING}),
+    new Page({name: 'Manage', value: Pages.MANAGE}),
+    new Page({name: 'Integrations', value: Pages.PLUGINS}),
+    new Page({name: 'Settings', value: Pages.SETTINGS})
+]);
 
 export function section(state = Pages.RANKING, action) {
     switch (action.type) {
@@ -17,6 +20,6 @@ export function section(state = Pages.RANKING, action) {
     }
 }
 
-export function sections(state, action) {
-    return pages;
+export function sections(state = pages, action) {
+    return state;
 }

@@ -1,11 +1,12 @@
+import Immutable from 'immutable';
 import {applyMiddleware, combineReducers, createStore} from 'redux';
 import ReduxThunk from 'redux-thunk';
 
-import * as reducers from './reducers';
+import * as Reducers from './reducers';
 
 export default class ReduxStore {
     constructor() {
-        this.store = createStore(combineReducers(reducers), applyMiddleware(ReduxThunk));
+        this.store = createStore(combineReducers(Reducers), new Immutable.Map({}), applyMiddleware(ReduxThunk));
     }
 
     dispatch(action) {
