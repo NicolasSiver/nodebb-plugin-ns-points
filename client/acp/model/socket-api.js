@@ -1,0 +1,1 @@
+export const GET_CALCULATION_PROPERTIES = 'plugins.ns-points.getCalculationProperties';
