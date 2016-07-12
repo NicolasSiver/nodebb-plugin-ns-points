@@ -1,19 +1,25 @@
-import {Provider} from 'react-redux';
 import React from 'react';
+import {Provider} from 'react-redux';
+
+import * as Actions from '../../controller/actions';
+import loadCalculationProperties from '../../actions/load-calculation-properties';
 import ReduxStore from '../../model/redux-store';
 import TabHost from './tab-host';
 
 export default class Dashboard extends React.Component {
     constructor(props) {
         super(props);
+        this.mainStore = new ReduxStore();
+    }
+
+    componentDidMount() {
+        this.mainStore.dispatch(loadCalculationProperties());
     }
 
     render() {
-        let mainStore = new ReduxStore();
-
         return <div className="panel panel-default">
             <div className="panel-body">
-                <Provider store={mainStore.getStore()}>
+                <Provider store={this.mainStore.getStore()}>
                     <TabHost/>
                 </Provider>
             </div>

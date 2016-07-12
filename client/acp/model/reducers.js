@@ -1,4 +1,4 @@
-import * as ActionType from './action-type';
+import * as ActionTypes from './action-types';
 import * as Pages from './pages';
 
 let pages = [
@@ -10,7 +10,7 @@ let pages = [
 
 export function section(state = Pages.RANKING, action) {
     switch (action.type) {
-        case ActionType.SECTION_WILL_CHANGE:
+        case ActionTypes.SECTION_WILL_CHANGE:
             return action.payload.section;
         default:
             return state;

@@ -1,8 +1,8 @@
-import * as ActionType from '../model/action-type';
+import * as ActionTypes from '../model/action-types';
 
 export function changeSection(page) {
     return {
-        type   : ActionType.SECTION_WILL_CHANGE,
+        type   : ActionTypes.SECTION_WILL_CHANGE,
         payload: {
             section: page
         }
