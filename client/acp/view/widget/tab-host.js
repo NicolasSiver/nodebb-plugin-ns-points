@@ -1,14 +1,15 @@
-import {changeSection} from '../../controller/actions';
 import classNames from 'classnames';
-import {connect} from 'react-redux';
-import * as Page from '../../model/page';
-import PagePlugins from './page-plugins';
 import React from 'react';
+import {connect} from 'react-redux';
+
+import {changeSection} from '../../controller/actions';
+import * as Pages from '../../model/pages';
+import PagePlugins from './page-plugins';
 
 class TabHost extends React.Component {
     createSection(page) {
         switch (page) {
-            case Page.PLUGINS:
+            case Pages.PLUGINS:
                 return <PagePlugins />;
             default:
                 return null;
@@ -29,7 +30,7 @@ class TabHost extends React.Component {
             </ul>
 
             <div className="tab-content">
-                <div className="tab-pane">
+                <div className="tab-pane active">
                     {this.createSection(this.props.section)}
                 </div>
             </div>
