@@ -7,7 +7,8 @@
         controller = require('./controller'),
         files      = require('./files'),
         filters    = require('./filters'),
-        settings   = require('./settings');
+        settings   = require('./settings'),
+        sockets    = require('./sockets');
 
     //NodeBB list of Hooks: https://github.com/NodeBB/NodeBB/wiki/Hooks
     Plugin.hooks = {
@@ -42,6 +43,7 @@
 
                 async.parallel({
                     settings: async.apply(settings.init),
+                    sockets : async.apply(sockets.init),
                     files   : async.apply(files.init)
                 }, callback);
             }

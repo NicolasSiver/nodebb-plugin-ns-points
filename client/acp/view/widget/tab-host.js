@@ -5,10 +5,13 @@ import {connect} from 'react-redux';
 import {changeSection} from '../../controller/actions';
 import * as Pages from '../../model/pages';
 import PagePlugins from './page-plugins';
+import PageRanking from './page-ranking';
 
 class TabHost extends React.Component {
     createSection(page) {
         switch (page) {
+            case Pages.RANKING:
+                return <PageRanking />;
             case Pages.PLUGINS:
                 return <PagePlugins />;
             default:

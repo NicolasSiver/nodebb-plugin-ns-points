@@ -11,6 +11,15 @@ const pages = new Immutable.List([
     new Page({name: 'Settings', value: Pages.SETTINGS})
 ]);
 
+export function calculationProperties(state = new Immutable.Map({}), action) {
+    switch (action.type) {
+        case ActionTypes.CALCULATION_PROPERTIES_DID_UPDATE:
+            return state.merge(action.payload);
+        default:
+            return state;
+    }
+}
+
 export function section(state = Pages.RANKING, action) {
     switch (action.type) {
         case ActionTypes.SECTION_WILL_CHANGE:

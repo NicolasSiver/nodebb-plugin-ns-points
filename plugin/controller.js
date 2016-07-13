@@ -1,12 +1,24 @@
 (function (Controller) {
     'use strict';
 
-    var async    = require('async'),
-        nconf    = require('./nodebb').nconf,
+    var async        = require('async'),
+        nconf        = require('./nodebb').nconf,
+        objectAssign = require('object-assign');
 
-        database = require('./database'),
+    var database = require('./database'),
         files    = require('./files'),
         settings = require('./settings');
+
+    Controller.getCalculationProperties = function (done) {
+        async.waterfall([
+            async.apply(settings.getData),
+            function (cachedSettings, next) {
+                var result = objectAssign({}, cachedSettings);
+                delete result.maxUsers;
+                next(null, result);
+            }
+        ], done);
+    };
 
     Controller.getTopUsers = function (done) {
         async.waterfall([
