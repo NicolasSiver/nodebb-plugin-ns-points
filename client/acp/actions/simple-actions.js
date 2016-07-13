@@ -15,3 +15,10 @@ export function updateProperties(properties) {
         payload: properties
     };
 }
+
+export function updateProperty(property, value) {
+    return {
+        type   : ActionTypes.CALCULATION_PROPERTY_WILL_UPDATE,
+        payload: {property, value}
+    };
+}

@@ -13,8 +13,21 @@ const pages = new Immutable.List([
 
 export function calculationProperties(state = new Immutable.Map({}), action) {
     switch (action.type) {
+        case ActionTypes.CALCULATION_PROPERTY_WILL_UPDATE:
+            let propertyUpdate = {};
+            propertyUpdate[action.payload.property] = action.payload.value;
+            return state.merge(propertyUpdate);
         case ActionTypes.CALCULATION_PROPERTIES_DID_UPDATE:
             return state.merge(action.payload);
+        default:
+            return state;
+    }
+}
+
+export function calculationPropertiesChanged(state = false, action) {
+    switch (action.type) {
+        case ActionTypes.CALCULATION_PROPERTY_WILL_UPDATE:
+            return true;
         default:
             return state;
     }

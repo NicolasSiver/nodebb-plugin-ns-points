@@ -5,7 +5,7 @@ export default function () {
     return (dispatch, getState) => {
         SocketService.getCalculationProperties((error, properties) => {
             if (!error) {
-                updateProperties(properties);
+                dispatch(updateProperties(properties));
             }
         });
     };
