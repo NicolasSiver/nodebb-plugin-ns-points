@@ -34,6 +34,30 @@ class PageRanking extends React.Component {
         };
     }
 
+    // FIXME DRY, try to use same Ranking calculation which is provided for the client side
+    calculateLevels(basePoints, baseGrow) {
+        let accumulatedPoints = 0,
+            level             = 1,
+            currentLevelTotal = parseInt(basePoints, 10),
+            levelGrow         = parseInt(baseGrow, 10),
+            preview           = [10, 20, 30, 40, 50, 60, 70, 80, 99],
+            previewIndex      = -1,
+            result            = [];
+
+        while (level < 100) {
+            level++;
+            accumulatedPoints += currentLevelTotal;
+            currentLevelTotal += levelGrow;
+
+            previewIndex = preview.indexOf(level);
+            if (previewIndex != -1) {
+                result.push({level, accumulatedPoints});
+            }
+        }
+
+        return result;
+    }
+
     createButton() {
         return (
             <button
@@ -90,6 +114,22 @@ class PageRanking extends React.Component {
         );
     }
 
+    generateLevelPreview(basePoints, baseGrow) {
+        if (basePoints == 0) {
+            return <div className="alert alert-warning" role="alert">Invalid. Level Grow isn't possible.</div>
+        }
+
+        return <div>
+            {this.calculateLevels(basePoints, baseGrow).map(levelData => {
+                return (
+                    <div className="level-preview">
+                        Level {levelData.level}: {levelData.accumulatedPoints} points
+                    </div>
+                );
+            })}
+        </div>;
+    }
+
     propertyDidChange(property, value) {
         console.log(`Property ${property} did change, value: ${value}`);
         this.props.dispatch(updateProperty(property, value));
@@ -102,6 +142,13 @@ class PageRanking extends React.Component {
                 <div className="col-md-8">
                     {this.generateFields(this.props.calculationProperties)}
                     {saveButton}
+                </div>
+                <div className="col-md-4">
+                    <h5>Ranking Preview: Default</h5>
+                    {this.generateLevelPreview(
+                        this.props.calculationProperties.get('basePoints'),
+                        this.props.calculationProperties.get('baseGrow')
+                    )}
                 </div>
             </div>
         );
