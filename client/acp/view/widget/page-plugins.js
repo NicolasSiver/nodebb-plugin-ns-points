@@ -6,7 +6,7 @@ class PagePlugins extends React.Component {
         return (
             <div>
                 <div className="alert alert-info" role="alert">Functionality will be added with a next big update.
-                    Points
+                    Plugin
                     will provide API for integration with another plugins.
                 </div>
             </div>
