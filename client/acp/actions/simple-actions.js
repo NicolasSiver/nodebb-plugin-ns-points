@@ -9,6 +9,12 @@ export function changeSection(page) {
     };
 }
 
+export function propertiesSaved() {
+    return {
+        type: ActionTypes.CALCULATION_PROPERTIES_DID_STORE
+    }
+}
+
 export function updateProperties(properties) {
     return {
         type   : ActionTypes.CALCULATION_PROPERTIES_DID_UPDATE,

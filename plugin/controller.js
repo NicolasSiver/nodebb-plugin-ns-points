@@ -57,4 +57,27 @@
         ], done);
     };
 
+    Controller.saveCalculationProperties = function (payload, done) {
+        var scheme = [
+            'postWeight', 'topicWeight',
+            'reputationWeight', 'reputationActionWeight',
+            'basePoints', 'baseGrow'
+        ];
+        async.waterfall([
+            function composePayload(callback) {
+                var result = {}, value;
+                scheme.forEach(function (field) {
+                    value = payload[field];
+                    if (payload.hasOwnProperty(field) && value) {
+                        result[field] = parseInt(value, 10);
+                    }
+                });
+                callback(null, result);
+            },
+            function save(data, callback) {
+                settings.save(data, callback);
+            }
+        ], done);
+    };
+
 })(module.exports);

@@ -13,4 +13,17 @@ export default class SocketService {
             }
         );
     }
+
+    static saveCalculationProperties(props, done) {
+        window.socket.emit(
+            SocketApi.SAVE_CALCULATION_PROPERTIES,
+            props,
+            (error) => {
+                if (error) {
+                    //App.alertError(error.message);
+                }
+                done(error);
+            }
+        );
+    }
 }

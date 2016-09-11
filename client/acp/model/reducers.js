@@ -27,6 +27,8 @@ export function calculationPropertiesChanged(state = false, action) {
     switch (action.type) {
         case ActionTypes.CALCULATION_PROPERTY_WILL_UPDATE:
             return true;
+        case ActionTypes.CALCULATION_PROPERTIES_DID_STORE:
+            return false;
         default:
             return state;
     }

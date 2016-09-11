@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
+import saveProperties from '../../actions/save-properties';
 import {updateProperty} from '../../actions/simple-actions';
 
 class PageRanking extends React.Component {
@@ -32,6 +33,8 @@ class PageRanking extends React.Component {
                 hint : 'Determines how many extra points needed to achieve every next level'
             }
         };
+
+        this.saveHandler = (e) => this.props.dispatch(saveProperties(this.props.calculationProperties));
     }
 
     // FIXME DRY, try to use same Ranking calculation which is provided for the client side
@@ -63,7 +66,7 @@ class PageRanking extends React.Component {
             <button
                 className="btn btn-primary"
                 type="button"
-                onClick={() => {}}><i className="fa fa-floppy-o"></i> Save Changes
+                onClick={this.saveHandler}><i className="fa fa-floppy-o"></i> Save Changes
             </button>
         );
     }
@@ -73,7 +76,7 @@ class PageRanking extends React.Component {
         let columns = 2, rows = [], index = 0, cursor = 0;
         let columnClass = `col-md-${12 / columns}`;
 
-        for (let key of fields.keys()) {
+        for (let key of Object.keys(fields)) {
             if (!rows[index]) {
                 rows[index] = [];
             }
@@ -100,7 +103,7 @@ class PageRanking extends React.Component {
                                                 type="number"
                                                 className="form-control"
                                                 id={fieldKey}
-                                                value={this.props.calculationProperties.get(fieldKey)}
+                                                value={this.props.calculationProperties[fieldKey]}
                                                 onChange={(e) => this.propertyDidChange(fieldKey, e.target.value)}/>
                                             {textData.hint}
                                         </div>
@@ -144,10 +147,10 @@ class PageRanking extends React.Component {
                     {saveButton}
                 </div>
                 <div className="col-md-4">
-                    <h5>Ranking Preview: Default</h5>
+                    <h5>Preview Default Ranking</h5>
                     {this.generateLevelPreview(
-                        this.props.calculationProperties.get('basePoints'),
-                        this.props.calculationProperties.get('baseGrow')
+                        this.props.calculationProperties['basePoints'],
+                        this.props.calculationProperties['baseGrow']
                     )}
                 </div>
             </div>
