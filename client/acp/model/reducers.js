@@ -1,24 +1,23 @@
-import Immutable from 'immutable';
+import u from 'updeep';
 
 import * as ActionTypes from './action-types';
 import * as Pages from './pages';
 
-const Page = new Immutable.Record({name: 'Default', value: 'None'});
-const pages = new Immutable.List([
-    new Page({name: 'Ranking', value: Pages.RANKING}),
-    new Page({name: 'Manage', value: Pages.MANAGE}),
-    new Page({name: 'Integrations', value: Pages.PLUGINS}),
-    new Page({name: 'Settings', value: Pages.SETTINGS})
-]);
+const PAGES = [
+    {name: 'Ranking', value: Pages.RANKING},
+    {name: 'Manage', value: Pages.MANAGE},
+    {name: 'Integrations', value: Pages.PLUGINS},
+    {name: 'Settings', value: Pages.SETTINGS}
+];
 
-export function calculationProperties(state = new Immutable.Map({}), action) {
+export function calculationProperties(state = {}, action) {
     switch (action.type) {
         case ActionTypes.CALCULATION_PROPERTY_WILL_UPDATE:
             let propertyUpdate = {};
             propertyUpdate[action.payload.property] = action.payload.value;
-            return state.merge(propertyUpdate);
+            return u(propertyUpdate, state);
         case ActionTypes.CALCULATION_PROPERTIES_DID_UPDATE:
-            return state.merge(action.payload);
+            return u(action.payload, state);
         default:
             return state;
     }
@@ -42,6 +41,6 @@ export function section(state = Pages.RANKING, action) {
     }
 }
 
-export function sections(state = pages, action) {
+export function sections(state = PAGES, action) {
     return state;
 }
