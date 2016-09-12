@@ -15,6 +15,13 @@ export function propertiesSaved() {
     }
 }
 
+export function setMaxOverviewUsers(users) {
+    return {
+        type   : ActionTypes.OVERVIEW_MAX_USERS_WILL_CHANGE,
+        payload: parseInt(users, 10)
+    }
+}
+
 export function updateProperties(properties) {
     return {
         type   : ActionTypes.CALCULATION_PROPERTIES_DID_UPDATE,

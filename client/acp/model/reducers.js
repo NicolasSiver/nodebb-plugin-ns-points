@@ -49,8 +49,19 @@ export function sections(state = PAGES, action) {
 
 export function settings(state = {}, action) {
     switch (action.type) {
+        case ActionTypes.OVERVIEW_MAX_USERS_WILL_CHANGE:
+            return u({maxUsers: action.payload}, state);
         case ActionTypes.SETTINGS_DID_UPDATE:
             return u(action.payload, state);
+        default:
+            return state;
+    }
+}
+
+export function settingsChanged(state = false, action) {
+    switch (action.type) {
+        case ActionTypes.OVERVIEW_MAX_USERS_WILL_CHANGE:
+            return true;
         default:
             return state;
     }
