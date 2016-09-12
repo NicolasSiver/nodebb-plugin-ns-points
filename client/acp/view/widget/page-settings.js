@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
+import SaveButton from '../display/save-button';
+import saveSettings from '../../actions/save-settings';
 import {setMaxOverviewUsers} from '../../actions/simple-actions';
 
 class PageSettings extends React.Component {
@@ -11,6 +13,9 @@ class PageSettings extends React.Component {
             if (users) {
                 this.props.dispatch(setMaxOverviewUsers(users));
             }
+        };
+        this.saveSettings = () => {
+            this.props.dispatch(saveSettings(this.props.settings));
         };
     }
 
@@ -29,6 +34,9 @@ class PageSettings extends React.Component {
                                 onChange={this.setMaxUsers}/>
                             How many persons should be shown at Overview page.
                         </div>
+                        <SaveButton
+                            enabled={this.props.settingsChanged}
+                            clickHandler={this.saveSettings}/>
                     </div>
                 </div>
             </div>

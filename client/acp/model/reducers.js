@@ -62,6 +62,8 @@ export function settingsChanged(state = false, action) {
     switch (action.type) {
         case ActionTypes.OVERVIEW_MAX_USERS_WILL_CHANGE:
             return true;
+        case ActionTypes.SETTINGS_DID_STORE:
+            return false;
         default:
             return state;
     }

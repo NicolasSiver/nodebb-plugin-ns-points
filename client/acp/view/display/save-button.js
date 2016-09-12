@@ -1,3 +1,5 @@
+import React from 'react';
+
 const SaveButton = ({enabled, clickHandler}) => {
     if (enabled) {
         return (
@@ -8,6 +10,8 @@ const SaveButton = ({enabled, clickHandler}) => {
             </button>
         );
     }
+
+    return null;
 };
 
 export default SaveButton;
