@@ -46,3 +46,12 @@ export function section(state = Pages.RANKING, action) {
 export function sections(state = PAGES, action) {
     return state;
 }
+
+export function settings(state = {}, action) {
+    switch (action.type) {
+        case ActionTypes.SETTINGS_DID_UPDATE:
+            return u(action.payload, state);
+        default:
+            return state;
+    }
+}

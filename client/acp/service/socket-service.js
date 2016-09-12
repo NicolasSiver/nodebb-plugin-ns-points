@@ -14,6 +14,19 @@ export default class SocketService {
         );
     }
 
+    static getSettings(done) {
+        window.socket.emit(
+            SocketApi.GET_SETTINGS,
+            {},
+            (error, settings) => {
+                if (error) {
+                    //App.alertError(error.message);
+                }
+                done(error, settings);
+            }
+        );
+    }
+
     static saveCalculationProperties(props, done) {
         window.socket.emit(
             SocketApi.SAVE_CALCULATION_PROPERTIES,

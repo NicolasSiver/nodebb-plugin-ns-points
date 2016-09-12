@@ -12,12 +12,17 @@
         sockets[constants.SOCKETS] = {};
         //Acknowledgements
         sockets[constants.SOCKETS].getCalculationProperties = Sockets.getCalculationProperties;
+        sockets[constants.SOCKETS].getSettings = Sockets.getSettings;
         sockets[constants.SOCKETS].saveCalculationProperties = Sockets.saveCalculationProperties;
         callback();
     };
 
     Sockets.getCalculationProperties = function (socket, payload, callback) {
         controller.getCalculationProperties(callback);
+    };
+
+    Sockets.getSettings = function (socket, payload, callback) {
+        controller.getSettings(callback);
     };
 
     Sockets.saveCalculationProperties = function (socket, payload, callback) {

@@ -3,6 +3,7 @@ import {Provider} from 'react-redux';
 
 import * as Actions from '../../controller/actions';
 import loadCalculationProperties from '../../actions/load-calculation-properties';
+import loadSettings from '../../actions/load-settings';
 import ReduxStore from '../../model/redux-store';
 import TabHost from './tab-host';
 
@@ -14,6 +15,7 @@ export default class Dashboard extends React.Component {
 
     componentDidMount() {
         this.mainStore.dispatch(loadCalculationProperties());
+        this.mainStore.dispatch(loadSettings());
     }
 
     render() {

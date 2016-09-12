@@ -20,6 +20,17 @@
         ], done);
     };
 
+    Controller.getSettings = function (done) {
+        async.waterfall([
+            async.apply(settings.getData),
+            function (settings, callback) {
+                callback(null, {
+                    maxUsers: settings.maxUsers
+                });
+            }
+        ], done);
+    };
+
     Controller.getTopUsers = function (done) {
         async.waterfall([
             function (next) {

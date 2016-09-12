@@ -28,3 +28,10 @@ export function updateProperty(property, value) {
         payload: {property, value}
     };
 }
+
+export function updateSettings(settings) {
+    return {
+        type   : ActionTypes.SETTINGS_DID_UPDATE,
+        payload: settings
+    }
+}
