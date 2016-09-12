@@ -39,4 +39,17 @@ export default class SocketService {
             }
         );
     }
+
+    static saveSettings(settings, done) {
+        window.socket.emit(
+            SocketApi.SAVE_SETTINGS,
+            settings,
+            (error) => {
+                if (error) {
+                    //App.alertError(error.message);
+                }
+                done(error);
+            }
+        );
+    }
 }

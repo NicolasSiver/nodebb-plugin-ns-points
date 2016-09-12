@@ -91,4 +91,21 @@
         ], done);
     };
 
+    Controller.saveSettings = function (payload, done) {
+        async.waterfall([
+            function validatePayload(callback) {
+                var users = parseInt(payload.maxUsers);
+                if (isNaN(users)) {
+                    return callback(new Error('Max Users is not a number.'));
+                }
+                callback(null, users);
+            },
+            function save(users, callback) {
+                settings.save({
+                    maxUsers: users
+                }, callback);
+            }
+        ], done);
+    };
+
 })(module.exports);

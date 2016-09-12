@@ -14,6 +14,7 @@
         sockets[constants.SOCKETS].getCalculationProperties = Sockets.getCalculationProperties;
         sockets[constants.SOCKETS].getSettings = Sockets.getSettings;
         sockets[constants.SOCKETS].saveCalculationProperties = Sockets.saveCalculationProperties;
+        sockets[constants.SOCKETS].saveSettings = Sockets.saveSettings;
         callback();
     };
 
@@ -27,6 +28,10 @@
 
     Sockets.saveCalculationProperties = function (socket, payload, callback) {
         controller.saveCalculationProperties(payload, callback);
+    };
+
+    Sockets.saveSettings = function (socket, payload, callback) {
+        controller.saveSettings(payload, callback);
     };
 
 })(module.exports);
