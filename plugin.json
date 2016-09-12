@@ -58,6 +58,7 @@
     "public/js/overview.js"
   ],
   "staticDirs": {
+    "css": "./public/css",
     "templates": "./public/templates",
     "js": "./public/js"
   },

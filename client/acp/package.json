@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --progress -p",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "webpack --progress --colors --watch"
+    "watch": "parallelshell 'webpack --progress --colors --watch' 'node-sass --watch style/acp.scss ../../public/css/acp.css'"
   },
   "keywords": [
     "acp"
@@ -33,6 +33,8 @@
     "babel-preset-react": "^6.11.1",
     "exports-loader": "^0.6.3",
     "imports-loader": "^0.6.5",
+    "node-sass": "^3.9.3",
+    "parallelshell": "^2.0.0",
     "webpack": "^1.13.2"
   }
 }
