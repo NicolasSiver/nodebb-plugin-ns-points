@@ -4,7 +4,7 @@
   "description": "ACP for Points management",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --progress -p",
+    "build": "NODE_ENV=production webpack --progress -p",
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "parallelshell 'webpack --progress --colors --watch' 'node-sass --watch style/acp.scss ../../public/css/acp.css'"
   },
