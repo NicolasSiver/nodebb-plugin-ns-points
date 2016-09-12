@@ -53,6 +53,9 @@
   "less": [
     "style/client.less"
   ],
+  "acpScripts": [
+    "public/js/acp.js"
+  ],
   "scripts": [
     "public/js/ranking.js",
     "public/js/overview.js"
