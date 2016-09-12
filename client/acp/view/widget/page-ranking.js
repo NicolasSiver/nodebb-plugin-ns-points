@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
+import SaveButton from '../display/save-button';
 import saveProperties from '../../actions/save-properties';
 import {updateProperty} from '../../actions/simple-actions';
 
@@ -59,16 +60,6 @@ class PageRanking extends React.Component {
         }
 
         return result;
-    }
-
-    createButton() {
-        return (
-            <button
-                className="btn btn-primary"
-                type="button"
-                onClick={this.saveHandler}><i className="fa fa-floppy-o"></i> Save Changes
-            </button>
-        );
     }
 
     generateFields(fields) {
@@ -134,17 +125,17 @@ class PageRanking extends React.Component {
     }
 
     propertyDidChange(property, value) {
-        console.log(`Property ${property} did change, value: ${value}`);
         this.props.dispatch(updateProperty(property, value));
     }
 
     render() {
-        let saveButton = (this.props.calculationPropertiesChanged) ? this.createButton() : null;
         return (
             <div className="row">
                 <div className="col-md-8">
                     {this.generateFields(this.props.calculationProperties)}
-                    {saveButton}
+                    <SaveButton
+                        enabled={this.props.calculationPropertiesChanged}
+                        clickHandler={this.saveHandler}/>
                 </div>
                 <div className="col-md-4">
                     <h5>Preview Default Ranking</h5>
