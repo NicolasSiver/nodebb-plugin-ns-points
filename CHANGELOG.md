@@ -1,7 +1,8 @@
 # Changelog
 
-### v4.0.0 - TBD
+### v4.0.0 - 9/11/2016
 
+- Fully functional ACP panel with an ability to change different settings: weight for actions, base values for computation, general settings
 - Compatibility with `v1.x.x` forum
 
 ### v3.0.1 - 3/31/2016
