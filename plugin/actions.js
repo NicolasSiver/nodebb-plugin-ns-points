@@ -35,7 +35,7 @@
      */
     Action.postSave = function (postData) {
         var value = settings.get().postWeight;
-        incrementPoints(postData.uid, value);
+        incrementPoints(postData.post.uid, value);
     };
 
     /**
@@ -74,7 +74,7 @@
      */
     Action.topicSave = function (topicData) {
         var value = settings.get().topicWeight;
-        incrementPoints(topicData.uid, value);
+        incrementPoints(topicData.topic.uid, value);
     };
 
 })(module.exports);
