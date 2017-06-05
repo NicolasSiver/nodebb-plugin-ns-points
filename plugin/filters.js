@@ -5,7 +5,6 @@
         database   = require('./database'),
         controller = require('./controller'),
         constants  = require('./constants');
-
     /**
      * Hook to render user profile.
      * 'userData' will be used as payload in hook handler.
@@ -70,6 +69,17 @@
                     return next(error);
                 }
                 post.points = points || 0;
+		var	accumulatedPoints = 0, level = 0, levelProgress = 0,
+			currentLevelTotal = parseInt(10, 10),
+			levelGrow         = parseInt(5, 10);
+		while (accumulatedPoints <= points) {
+			levelProgress = points - accumulatedPoints;
+			level++;
+			accumulatedPoints += currentLevelTotal;
+			currentLevelTotal += levelGrow;
+		}
+		
+		post.rank =level || 1;
                 next(null, post);
             });
         }, function (error, results) {
