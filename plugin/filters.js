@@ -70,9 +70,9 @@
                 }
                 post.points = points || 0;
 		
-		var level = Math.ceil(Math.sqrt(10*post.points + 42.25)/5 - 1.3)
-		post.rank = level === 0 ? 1 : level
-		next(null, post);
+        		var level = Math.ceil(Math.sqrt(10*post.points + 42.25)/5 - 1.3)
+        		post.rank = level === 0 ? 1 : level
+        		next(null, post);
             });
         }, function (error, results) {
             if (error) {

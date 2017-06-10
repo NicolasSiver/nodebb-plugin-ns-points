@@ -12,6 +12,7 @@
         socketIndex  : NodeBB.require('./src/socket.io/index'),
         topics       : NodeBB.require('./src/topics'),
         user         : NodeBB.require('./src/user'),
+        plugins      : NodeBB.require('./src/plugins'),
 
         nconf: NodeBB.require('nconf')
     };

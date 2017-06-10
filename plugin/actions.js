@@ -3,9 +3,12 @@
 
     var async    = require('async'),
         _        = require('lodash'),
-
         settings = require('./settings'),
         database = require('./database');
+
+    var nodebb    = require('./nodebb');
+    var plugins = nodebb.plugins;
+
 
     var debug = function (id, delta, total) {
         console.log('User %d changed amount of points on %d, total: %d', id, delta, total);
@@ -25,6 +28,7 @@
             }
             //TODO Today Statistics
             //debug(uid, increment, points);
+            plugins.fireHook('action:points.increment', {uid : uid, points : increment});
             done(null);
         });
     };
