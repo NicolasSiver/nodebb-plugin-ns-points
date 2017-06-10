@@ -3,9 +3,12 @@
 
     var async    = require('async'),
         _        = require('lodash'),
-
         settings = require('./settings'),
         database = require('./database');
+
+    var nodebb    = require('./nodebb');
+    var plugins = nodebb.plugins;
+
 
     var debug = function (id, delta, total) {
         console.log('User %d changed amount of points on %d, total: %d', id, delta, total);
@@ -25,6 +28,7 @@
             }
             //TODO Today Statistics
             //debug(uid, increment, points);
+            plugins.fireHook('action:points.increment', {uid : uid, points : increment});
             done(null);
         });
     };
@@ -35,7 +39,7 @@
      */
     Action.postSave = function (postData) {
         var value = settings.get().postWeight;
-        incrementPoints(postData.uid, value);
+        incrementPoints(postData.post.uid, value);
     };
 
     /**
@@ -74,7 +78,7 @@
      */
     Action.topicSave = function (topicData) {
         var value = settings.get().topicWeight;
-        incrementPoints(topicData.uid, value);
+        incrementPoints(topicData.topic.uid, value);
     };
 
 })(module.exports);
