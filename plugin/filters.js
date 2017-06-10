@@ -69,18 +69,10 @@
                     return next(error);
                 }
                 post.points = points || 0;
-		var	accumulatedPoints = 0, level = 0, levelProgress = 0,
-			currentLevelTotal = parseInt(10, 10),
-			levelGrow         = parseInt(5, 10);
-		while (accumulatedPoints <= points) {
-			levelProgress = points - accumulatedPoints;
-			level++;
-			accumulatedPoints += currentLevelTotal;
-			currentLevelTotal += levelGrow;
-		}
 		
-		post.rank =level || 1;
-                next(null, post);
+		var level = Math.ceil(Math.sqrt(10*post.points + 42.25)/5 - 1.3)
+		post.rank = level === 0 ? 1 : level
+		next(null, post);
             });
         }, function (error, results) {
             if (error) {
