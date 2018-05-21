@@ -1,24 +1,23 @@
 (function (Action) {
     'use strict';
 
-    var async    = require('async'),
-        _        = require('lodash'),
+    const async = require('async');
 
-        settings = require('./settings'),
-        database = require('./database');
+    const settings = require('./settings'),
+          database = require('./database');
 
-    var debug = function (id, delta, total) {
+    const debug = function (id, delta, total) {
         console.log('User %d changed amount of points on %d, total: %d', id, delta, total);
     };
 
-    var groupChange = function (users, done) {
+    const groupChange = function (users, done) {
         async.each(users, function (user, next) {
             incrementPoints(user.uid, user.points, next);
         }, done);
     };
 
-    var incrementPoints = function (uid, increment, done) {
-        done = done || _.noop;
+    const incrementPoints = function (uid, increment, done) {
+        done = done || (() => undefined);
         database.incrementBy(uid, increment, function (error, points) {
             if (error) {
                 return done(error);
@@ -73,7 +72,7 @@
      * @param topicData {object} Signature - { tid:2, uid:1, cid:'1', mainPid:0, title: 'text', slug:'text', timestamp: 429976183015, lastposttime:0, postcount:0, viewcount:0, locked:0, deleted:0, pinned:0 }
      */
     Action.topicSave = function (topicData) {
-        var value = settings.get().topicWeight;
+        let value = settings.get().topicWeight;
         incrementPoints(topicData.uid, value);
     };
 
