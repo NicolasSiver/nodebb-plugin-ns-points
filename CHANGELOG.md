@@ -1,5 +1,9 @@
 # Changelog
 
+### v5.0.0 - TBD
+
+- Changed compatibility with NodeBB `v1.9.x`
+
 ### v4.0.0 - 9/11/2016
 
 - Fully functional ACP panel with an ability to change different settings: weight for actions, base values for computation, general settings
