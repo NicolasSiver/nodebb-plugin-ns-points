@@ -32,5 +32,8 @@
   },
   "nbbpm": {
     "compatibility": "^1.x"
+  },
+  "engines": {
+    "node": ">=6"
   }
 }
