@@ -3,6 +3,7 @@
 ### v5.0.0 - TBD
 
 - Changed compatibility with NodeBB `v1.9.x`
+- Removed development dependencies like `lodash` and `code-climate`
 
 ### v4.0.0 - 9/11/2016
 

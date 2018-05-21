@@ -4,8 +4,6 @@ Additional metrics for User Profiles. It's like experience in video games. Plugi
 
 ![Version](https://img.shields.io/npm/v/nodebb-plugin-ns-points.svg)
 ![Dependencies](https://david-dm.org/NicolasSiver/nodebb-plugin-ns-points.svg)
-![bitHound Score](https://www.bithound.io/github/NicolasSiver/nodebb-plugin-ns-points/badges/score.svg)
-![Code Climate](https://img.shields.io/codeclimate/github/NicolasSiver/nodebb-plugin-ns-points.svg)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
