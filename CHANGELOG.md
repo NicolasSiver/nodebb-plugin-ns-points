@@ -6,6 +6,7 @@
 - Changed `Overview` page to handle rendering process server-side
 - Removed development dependencies like `lodash` and `code-climate`
 - Fixed issue with long user names on `Overview` page
+- Fixed issue where deleted user was not removed completely
 
 ### v4.0.0 - 9/11/2016
 
