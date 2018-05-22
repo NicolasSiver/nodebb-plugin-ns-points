@@ -46,6 +46,10 @@
                     sockets : async.apply(sockets.init),
                     files   : async.apply(files.init)
                 }, callback);
+            },
+
+            userDelete: function ({uid}, callback) {
+                controller.deleteUser(uid, callback);
             }
         }
     };

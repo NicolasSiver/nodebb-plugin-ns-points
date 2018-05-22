@@ -1,13 +1,13 @@
 (function (Database) {
     'use strict';
 
-    var async = require('async');
+    const async = require('async');
 
-    var nodebb    = require('./nodebb'),
-        constants = require('./constants');
+    const nodebb    = require('./nodebb'),
+          constants = require('./constants');
 
-    var db   = nodebb.db,
-        user = nodebb.user;
+    const db   = nodebb.db,
+          user = nodebb.user;
 
     //FIXME Remove Points object if User is deleted or create utility method for ACP
     Database.delete = function (uid, done) {

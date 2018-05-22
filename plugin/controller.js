@@ -10,6 +10,10 @@
           files    = require('./files'),
           settings = require('./settings');
 
+    Controller.deleteUser = function (uid, done) {
+        database.delete(uid, done);
+    };
+
     Controller.getCalculationProperties = function (done) {
         async.waterfall([
             async.apply(settings.getData),

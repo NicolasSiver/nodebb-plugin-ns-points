@@ -48,6 +48,10 @@
     {
       "hook": "static:app.load",
       "method": "hooks.statics.load"
+    },
+    {
+      "hook": "static:user.delete",
+      "method": "hooks.statics.userDelete"
     }
   ],
   "less": [
