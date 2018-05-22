@@ -2,7 +2,7 @@
 
 /* globals define, app, ajaxify, bootbox, socket, templates, utils */
 
-define('forum/client/points/overview', ['forum/points/ranking', 'benchpress'], function (ranking, Benchpress) {
+define('forum/client/points/overview', [], function () {
 
     var Overview  = {},
         columns   = 4,
@@ -10,66 +10,25 @@ define('forum/client/points/overview', ['forum/points/ranking', 'benchpress'], f
         delay     = 0.1;
 
     Overview.init = function () {
-        var users = ajaxify.data.users;
+        var container = document.getElementsByClassName('points-users')[0];
+        var i, len = ajaxify.data.users.length, payload, htmlRow, htmlUser;
 
-        if (users.length > 0) {
-            Benchpress.registerLoader(function (name) {
-                if (name === 'ns-points') {
-                    return Promise.resolve(function () {
-                        return ajaxify.data.userTemplate;
-                    });
-                }
-            });
+        for (i = 0; i < len; ++i) {
+            payload = ajaxify.data.users[i];
 
-            renderUser(
-                document.getElementsByClassName('points-users')[0], null, 0, users
-            );
+            if (i % columns === 0) {
+                htmlRow = document.createElement('div');
+                htmlRow.className = 'row';
+                container.appendChild(htmlRow);
+            }
+
+            htmlUser = document.createElement('div');
+            htmlUser.className = className;
+            htmlUser.style['animation-delay'] = delay * i + 's';
+            htmlUser.innerHTML = payload;
+            htmlRow.appendChild(htmlUser);
         }
     };
-
-    function getProgressMessage(rankMeta) {
-        return rankMeta.rankProgress + ' / ' + rankMeta.rankTotal;
-    }
-
-    function renderUser(container, row, cursor, users) {
-        var htmlRow, htmlUser, rankMeta;
-        var payload = users[cursor];
-
-        if (cursor % columns === 0) {
-            htmlRow = document.createElement('div');
-            htmlRow.className = 'row';
-            container.appendChild(htmlRow);
-        } else {
-            htmlRow = row;
-        }
-
-        //Calculation
-        rankMeta = ranking.defaultRanking({
-            basePoints: ajaxify.data.pointsSettings.basePoints,
-            baseGrow  : ajaxify.data.pointsSettings.baseGrow
-        }, payload.points);
-
-        //Inject additional parameters
-        payload.relative_path = ajaxify.data.relative_path;
-        payload.rank = rankMeta.rank;
-        payload.rankProgress = getProgressMessage(rankMeta);
-        payload.progress = rankMeta.rankProgress / rankMeta.rankTotal * 100;
-
-        htmlUser = document.createElement('div');
-        htmlUser.className = className;
-        htmlUser.style['animation-delay'] = delay * cursor + 's';
-
-        Benchpress
-            .render('ns-points', payload)
-            .then(function (content) {
-                htmlUser.innerHTML = content;
-                htmlRow.appendChild(htmlUser);
-
-                if (cursor + 1 < users.length) {
-                    renderUser(container, htmlRow, cursor + 1, users);
-                }
-            });
-    }
 
     return Overview;
 });
