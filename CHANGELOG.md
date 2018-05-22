@@ -3,7 +3,9 @@
 ### v5.0.0 - TBD
 
 - Changed compatibility with NodeBB `v1.9.x`
+- Changed `Overview` page to handle rendering process server-side
 - Removed development dependencies like `lodash` and `code-climate`
+- Fixed issue with long user names on `Overview` page
 
 ### v4.0.0 - 9/11/2016
 
