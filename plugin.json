@@ -57,7 +57,6 @@
     "public/js/acp.js"
   ],
   "scripts": [
-    "public/js/ranking.js",
     "public/js/overview.js"
   ],
   "staticDirs": {
