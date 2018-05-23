@@ -9,11 +9,10 @@ Additional metrics for User Profiles. It's like experience in video games. Plugi
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
  
 
-- [Ranking Calculation](#ranking-calculation)
+- [The Ranking Calculation](#the-ranking-calculation)
 - [Themes](#themes)
   - [Profile View](#profile-view)
   - [Topic View](#topic-view)
-- [TODO](#todo)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -58,19 +57,3 @@ Find block that is responsible for [stats](https://github.com/NodeBB/nodebb-them
 
 Every post will have additional field: `points`.
 If you want utilize points calculation feature in topic view, you should use theme that supports such type of integration.
-
-## TODO
-
-- Add Gifts: ability to add points through ACP with a notification
-- Add Transfers: user can transfer some of his points as a reward for some bounty or help or user generated competition
-- Add Points Grid: multipliers or raw values for different categories
-- Add Fresh Points: provide information for points that are earned today
-- Add Complexity to Point calculation: encourage tags in topic creation
-- Add Custom ranking calculators
-- Add ACP Panel for raw point rewards
-- Add API for raw point rewards
-- Add Custom Notifications for levels
-- Add Presets for ranking calculation
-- Add Sections to Overview page: all time, today, personal.
-- Add Utility for initial point calculation
-- Add Tests (Mocha/Tape)
