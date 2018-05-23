@@ -13,7 +13,8 @@
         topics       : NodeBB.require('./src/topics'),
         user         : NodeBB.require('./src/user'),
 
-        nconf: NodeBB.require('nconf')
+        benchpress: NodeBB.require('benchpressjs'),
+        nconf   : NodeBB.require('nconf')
     };
 
 })(module, require.main);

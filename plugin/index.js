@@ -1,14 +1,14 @@
 (function (Plugin) {
     'use strict';
 
-    var async = require('async');
+    const async = require('async');
 
-    var actions    = require('./actions'),
-        controller = require('./controller'),
-        files      = require('./files'),
-        filters    = require('./filters'),
-        settings   = require('./settings'),
-        sockets    = require('./sockets');
+    const actions    = require('./actions'),
+          controller = require('./controller'),
+          files      = require('./files'),
+          filters    = require('./filters'),
+          settings   = require('./settings'),
+          sockets    = require('./sockets');
 
     //NodeBB list of Hooks: https://github.com/NodeBB/NodeBB/wiki/Hooks
     Plugin.hooks = {
@@ -46,6 +46,10 @@
                     sockets : async.apply(sockets.init),
                     files   : async.apply(files.init)
                 }, callback);
+            },
+
+            userDelete: function ({uid}, callback) {
+                controller.deleteUser(uid, callback);
             }
         }
     };

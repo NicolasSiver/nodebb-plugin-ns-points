@@ -48,6 +48,10 @@
     {
       "hook": "static:app.load",
       "method": "hooks.statics.load"
+    },
+    {
+      "hook": "static:user.delete",
+      "method": "hooks.statics.userDelete"
     }
   ],
   "less": [
@@ -57,7 +61,6 @@
     "public/js/acp.js"
   ],
   "scripts": [
-    "public/js/ranking.js",
     "public/js/overview.js"
   ],
   "staticDirs": {

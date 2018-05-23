@@ -6,7 +6,6 @@ import * as Pages from './pages';
 const PAGES = [
     {name: 'Ranking', value: Pages.RANKING},
     {name: 'Manage', value: Pages.MANAGE},
-    {name: 'Integrations', value: Pages.PLUGINS},
     {name: 'Settings', value: Pages.SETTINGS}
 ];
 

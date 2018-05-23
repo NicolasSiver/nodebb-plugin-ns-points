@@ -1,19 +1,24 @@
 (function (Controller) {
     'use strict';
 
-    var async        = require('async'),
-        nconf        = require('./nodebb').nconf,
-        objectAssign = require('object-assign');
+    const async      = require('async'),
+          benchpress = require('./nodebb').benchpress,
+          nconf      = require('./nodebb').nconf;
 
-    var database = require('./database'),
-        files    = require('./files'),
-        settings = require('./settings');
+    const database = require('./database'),
+          Ranking  = require('./default-ranking'),
+          files    = require('./files'),
+          settings = require('./settings');
+
+    Controller.deleteUser = function (uid, done) {
+        database.delete(uid, done);
+    };
 
     Controller.getCalculationProperties = function (done) {
         async.waterfall([
             async.apply(settings.getData),
             function (cachedSettings, next) {
-                var result = objectAssign({}, cachedSettings);
+                let result = Object.assign({}, cachedSettings);
                 delete result.maxUsers;
                 next(null, result);
             }
@@ -32,6 +37,8 @@
     };
 
     Controller.getTopUsers = function (done) {
+        let templateData, rankMeta;
+
         async.waterfall([
             function (next) {
                 async.parallel({
@@ -45,16 +52,32 @@
                         return next(error);
                     }
 
-                    next(null, {
-                        relative_path: nconf.get('relative_path'),
-                        users        : users,
-                        userTemplate : payload.userTemplate
-                    });
+                    async.map(
+                        users,
+                        (user, callback) => {
+                            rankMeta = Ranking.compute(payload.settingsData, user.points);
+
+                            templateData = Object.assign(
+                                {
+                                    progress     : rankMeta.rankProgress / rankMeta.rankTotal * 100,
+                                    rank         : rankMeta.rank,
+                                    rankProgress : `${rankMeta.rankProgress} / ${rankMeta.rankTotal}`,
+                                    relative_path: nconf.get('relative_path')
+                                },
+                                user
+                            );
+
+                            benchpress
+                                .compileRender(payload.userTemplate, templateData)
+                                .then(template => {
+                                    callback(null, template);
+                                });
+                        },
+                        next
+                    );
                 });
             },
-            function (topUsers, next) {
-                Controller.injectSettings(topUsers, next);
-            }
+            (users, next) => next(null, {users})
         ], done);
     };
 
@@ -69,14 +92,14 @@
     };
 
     Controller.saveCalculationProperties = function (payload, done) {
-        var scheme = [
+        let scheme = [
             'postWeight', 'topicWeight',
             'reputationWeight', 'reputationActionWeight',
             'basePoints', 'baseGrow'
         ];
         async.waterfall([
             function composePayload(callback) {
-                var result = {}, value;
+                let result = {}, value;
                 scheme.forEach(function (field) {
                     value = payload[field];
                     if (payload.hasOwnProperty(field) && value) {
@@ -94,7 +117,7 @@
     Controller.saveSettings = function (payload, done) {
         async.waterfall([
             function validatePayload(callback) {
-                var users = parseInt(payload.maxUsers);
+                let users = parseInt(payload.maxUsers);
                 if (isNaN(users)) {
                     return callback(new Error('Max Users is not a number.'));
                 }
