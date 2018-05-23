@@ -1,6 +1,6 @@
 # Changelog
 
-### v5.0.0 - TBD
+### v5.0.0 - 5/22/2018
 
 - Changed compatibility with NodeBB `v1.9.x`
 - Changed `Overview` page to handle rendering process server-side
