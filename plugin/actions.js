@@ -90,7 +90,7 @@
     };
 
     /**
-     * Downvote action seems to be added in new versions of nodebb
+     * Downvote action
      * @param metadata {object} aggregated data -  { pid:'2', uid:1, owner:2, current:'unvote'}
      */
     Action.postDownvote = function (metadata) {
