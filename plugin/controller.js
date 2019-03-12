@@ -52,6 +52,8 @@
                         return next(error);
                     }
 
+                    users = users.filter(user => user.uid > 0);
+
                     async.map(
                         users,
                         (user, callback) => {

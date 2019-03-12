@@ -23,7 +23,7 @@
                 return done(error);
             }
             //TODO Today Statistics
-            //debug(uid, increment, points);
+            // debug(uid, increment, points);
             done(null);
         });
     };
@@ -34,7 +34,7 @@
      */
     Action.postSave = function (postData) {
         var value = settings.get().postWeight;
-        incrementPoints(postData.uid, value);
+        incrementPoints(postData.post.uid, value);
     };
 
     /**
@@ -43,7 +43,7 @@
      * @param metadata {object} aggregated data -  { pid:'2', uid:1, owner:2, current:'unvote'}
      */
     Action.postUnvote = function (metadata) {
-        //Handle unvotes only for upvotes
+        //Handle unvotes for both upvotes and downvotes
         if (metadata.current === 'upvote') {
             groupChange([
                 {uid: metadata.owner, points: -settings.get().reputationWeight},
@@ -54,17 +54,66 @@
                 }
             })
         }
+        else if (metadata.current === 'downvote') {
+            groupChange([
+                {uid: metadata.owner, points: settings.get().reputationWeight},
+                {uid: metadata.uid, points: settings.get().reputationActionWeight}
+            ], function (error) {
+                if (error) {
+                    console.error(error);
+                }
+            })
+        }
     };
 
     Action.postUpvote = function (metadata) {
-        groupChange([
-            {uid: metadata.owner, points: settings.get().reputationWeight},
-            {uid: metadata.uid, points: settings.get().reputationActionWeight}
-        ], function (error) {
-            if (error) {
-                console.error(error);
-            }
-        })
+        if (metadata.current === 'unvote') {
+            groupChange([
+                {uid: metadata.owner, points: settings.get().reputationWeight},
+                {uid: metadata.uid, points: settings.get().reputationActionWeight}
+            ], function (error) {
+                if (error) {
+                    console.error(error);
+                }
+            })
+        }
+        else if (metadata.current === 'downvote') {
+            groupChange([
+                {uid: metadata.owner, points: settings.get().reputationWeight * 2},
+                {uid: metadata.uid, points: settings.get().reputationActionWeight * 2}
+            ], function (error) {
+                if (error) {
+                    console.error(error);
+                }
+            })
+        }
+    };
+
+    /**
+     * Downvote action seems to be added in new versions of nodebb
+     * @param metadata {object} aggregated data -  { pid:'2', uid:1, owner:2, current:'unvote'}
+     */
+    Action.postDownvote = function (metadata) {
+        if (metadata.current === 'unvote') {
+            groupChange([
+                {uid: metadata.owner, points: -settings.get().reputationWeight},
+                {uid: metadata.uid, points: -settings.get().reputationActionWeight}
+            ], function (error) {
+                if (error) {
+                    console.error(error);
+                }
+            })
+        }
+        else if (metadata.current === 'upvote') {
+            groupChange([
+                {uid: metadata.owner, points: -settings.get().reputationWeight * 2},
+                {uid: metadata.uid, points: -settings.get().reputationActionWeight * 2}
+            ], function (error) {
+                if (error) {
+                    console.error(error);
+                }
+            })
+        }
     };
 
     /**
@@ -73,7 +122,7 @@
      */
     Action.topicSave = function (topicData) {
         let value = settings.get().topicWeight;
-        incrementPoints(topicData.uid, value);
+        incrementPoints(topicData.topic.uid, value);
     };
 
 })(module.exports);

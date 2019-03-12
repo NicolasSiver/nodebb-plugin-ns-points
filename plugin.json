@@ -22,6 +22,10 @@
       "method": "hooks.actions.postUnvote"
     },
     {
+      "hook": "action:post.downvote",
+      "method": "hooks.actions.postDownvote"
+    },
+    {
       "hook": "filter:admin.header.build",
       "method": "hooks.filters.menuAdmin"
     },
