@@ -54,33 +54,13 @@
                 }
             })
         }
-        else if (metadata.current === 'downvote') {
-            groupChange([
-                {uid: metadata.owner, points: settings.get().reputationWeight},
-                {uid: metadata.uid, points: settings.get().reputationActionWeight}
-            ], function (error) {
-                if (error) {
-                    console.error(error);
-                }
-            })
-        }
     };
 
     Action.postUpvote = function (metadata) {
-        if (metadata.current === 'unvote') {
+        if (metadata.current === 'unvote' || metadata.current === 'downvote') {
             groupChange([
                 {uid: metadata.owner, points: settings.get().reputationWeight},
                 {uid: metadata.uid, points: settings.get().reputationActionWeight}
-            ], function (error) {
-                if (error) {
-                    console.error(error);
-                }
-            })
-        }
-        else if (metadata.current === 'downvote') {
-            groupChange([
-                {uid: metadata.owner, points: settings.get().reputationWeight * 2},
-                {uid: metadata.uid, points: settings.get().reputationActionWeight * 2}
             ], function (error) {
                 if (error) {
                     console.error(error);
@@ -94,20 +74,10 @@
      * @param metadata {object} aggregated data -  { pid:'2', uid:1, owner:2, current:'unvote'}
      */
     Action.postDownvote = function (metadata) {
-        if (metadata.current === 'unvote') {
+        if (metadata.current === 'upvote') {
             groupChange([
                 {uid: metadata.owner, points: -settings.get().reputationWeight},
                 {uid: metadata.uid, points: -settings.get().reputationActionWeight}
-            ], function (error) {
-                if (error) {
-                    console.error(error);
-                }
-            })
-        }
-        else if (metadata.current === 'upvote') {
-            groupChange([
-                {uid: metadata.owner, points: -settings.get().reputationWeight * 2},
-                {uid: metadata.uid, points: -settings.get().reputationActionWeight * 2}
             ], function (error) {
                 if (error) {
                     console.error(error);
