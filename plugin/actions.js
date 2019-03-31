@@ -17,6 +17,7 @@
     };
 
     const incrementPoints = function (uid, increment, done) {
+        // TODO Prevent points assignment for guest users
         done = done || (() => undefined);
         database.incrementBy(uid, increment, function (error, points) {
             if (error) {
