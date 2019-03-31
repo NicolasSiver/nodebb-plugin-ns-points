@@ -1,5 +1,9 @@
 # Changelog
 
+### v6.0.0 - 3/30/2019
+
+- Changed compatibility with NodeBB `v1.12.x`
+
 ### v5.0.0 - 5/22/2018
 
 - Changed compatibility with NodeBB `v1.9.x`

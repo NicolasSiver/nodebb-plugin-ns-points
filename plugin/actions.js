@@ -17,6 +17,7 @@
     };
 
     const incrementPoints = function (uid, increment, done) {
+        // TODO Prevent points assignment for guest users
         done = done || (() => undefined);
         database.incrementBy(uid, increment, function (error, points) {
             if (error) {
@@ -34,7 +35,7 @@
      */
     Action.postSave = function (postData) {
         var value = settings.get().postWeight;
-        incrementPoints(postData.uid, value);
+        incrementPoints(postData.post.uid, value);
     };
 
     /**
@@ -73,7 +74,7 @@
      */
     Action.topicSave = function (topicData) {
         let value = settings.get().topicWeight;
-        incrementPoints(topicData.uid, value);
+        incrementPoints(topicData.topic.uid, value);
     };
 
 })(module.exports);

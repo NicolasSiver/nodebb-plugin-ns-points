@@ -3,8 +3,7 @@
 
     var async      = require('async'),
         database   = require('./database'),
-        controller = require('./controller'),
-        constants  = require('./constants');
+        controller = require('./controller');
 
     /**
      * Hook to render user profile.
