@@ -3,8 +3,7 @@
 
     var constants  = require('./constants'),
         controller = require('./controller'),
-        nodebb     = require('./nodebb'),
-        settings   = require('./settings');
+        nodebb     = require('./nodebb');
 
     var sockets = nodebb.pluginSockets;
 
