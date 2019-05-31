@@ -8,6 +8,7 @@
     /**
      * Hook to render user profile.
      * 'userData' will be used as payload in hook handler.
+     *
      * @param params {object} Payload :{userData: userData, uid: callerUID}
      * @param callback {function}
      */
@@ -44,6 +45,7 @@
 
     /**
      * Hook to render single posted post
+     *
      * @param postData {object} Fields: {pid, uid, tid, content, timestamp, reputation, votes, editor, edited, deleted, cid}
      * @param callback {function}
      */
@@ -59,6 +61,7 @@
 
     /**
      * Hook to render topic thread
+     * 
      * @param payload {object} Fields: {posts: posts, uid: uid}
      * @param callback {function}
      */
