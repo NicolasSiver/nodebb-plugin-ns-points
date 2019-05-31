@@ -1,5 +1,9 @@
 # Changelog
 
+### v6.0.1 - 5/30/2019
+
+- Fixed issue with the forum crash if there are purged posts in the topic
+
 ### v6.0.0 - 3/30/2019
 
 - Changed compatibility with NodeBB `v1.12.x`
