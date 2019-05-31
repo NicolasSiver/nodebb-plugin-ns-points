@@ -61,12 +61,15 @@
 
     /**
      * Hook to render topic thread
-     * 
+     *
      * @param payload {object} Fields: {posts: posts, uid: uid}
      * @param callback {function}
      */
     Filter.postGetPosts = function (payload, callback) {
-        async.map(payload.posts, function (post, next) {
+        // Remove purged posts
+        var posts = payload.posts.filter(post => post !== null);
+
+        async.map(posts, function (post, next) {
             database.getPoints(post.uid, function (error, points) {
                 if (error) {
                     return next(error);
